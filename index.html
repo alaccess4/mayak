@@ -219,8 +219,15 @@ input,textarea{font:inherit;color:inherit}
 
 /* ---------- PROFILE ---------- */
 .pf{display:flex;align-items:center;gap:16px;padding:4px 20px 22px}
-.pf-a{width:60px;height:60px;border-radius:50%;background:var(--accg);display:grid;place-items:center;
- font-family:var(--fd);font-weight:700;font-size:23px;color:#fff;flex-shrink:0;background-size:cover;background-position:center}
+.pf-a{position:relative;width:60px;height:60px;border-radius:50%;background:var(--accg);display:grid;place-items:center;
+ font-family:var(--fd);font-weight:700;font-size:23px;color:#fff;flex-shrink:0;background-size:cover;
+ background-position:center;cursor:pointer;overflow:visible}
+.pf-a .logo{opacity:.9}
+.pf-plus{position:absolute;bottom:-2px;right:-2px;width:22px;height:22px;border-radius:50%;
+ background:var(--accg);border:2px solid var(--bg);display:grid;place-items:center;
+ font-size:13px;color:#fff;line-height:1;font-family:var(--fu);font-weight:600}
+.pf-bio{margin:0 20px 18px;padding:15px 17px;border-radius:var(--r);background:var(--gl);
+ border:1px solid var(--bd);font-size:14px;color:var(--t2);line-height:1.6}
 .pf-n{font-family:var(--fd);font-weight:700;font-size:19px;letter-spacing:-.02em}
 .pf-e{font-size:13.5px;color:var(--t4);margin-top:2px}
 .pf-s{display:grid;grid-template-columns:repeat(3,1fr);margin:0 20px 20px;background:var(--gl);
@@ -367,6 +374,62 @@ textarea.inp{min-height:108px;resize:none;line-height:1.55}
 .inst-n{font-size:15px;font-weight:600}
 .inst-s{font-size:13px;color:var(--t4);margin-top:2px}
 
+/* ---------- КРЕДО (зачем эта область / вершина) ---------- */
+.credo{margin:0 20px 18px;padding:17px 19px;border-radius:var(--r);position:relative;overflow:hidden;
+ background:linear-gradient(135deg,rgba(113,61,255,.22),rgba(113,61,255,.05) 70%);
+ border:1px solid rgba(183,164,251,.32);border-left:3px solid var(--acc2)}
+.credo.c2{background:linear-gradient(135deg,color-mix(in srgb,var(--nc) 22%,transparent),transparent 72%);
+ border-color:color-mix(in srgb,var(--nc) 40%,transparent);border-left-color:var(--nc)}
+.credo-l{font-size:10.5px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--acc3)}
+.credo.c2 .credo-l{color:var(--nc)}
+.credo-t{font-size:15.5px;line-height:1.55;margin-top:9px;color:var(--t1);font-weight:500}
+.credo-e{font-size:14px;color:var(--t4);margin-top:9px;font-style:italic}
+
+/* ---------- ИКОНКИ ОБЛАСТЕЙ ПОД КАРТОЙ ---------- */
+.icons{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;padding:4px 14px 0}
+.ico-a{width:62px;display:flex;flex-direction:column;align-items:center;gap:6px;padding:6px 2px;
+ border-radius:14px;transition:.18s}
+.ico-a:active{transform:scale(.93);background:var(--gl)}
+.ico-r{position:relative;width:50px;height:50px;flex-shrink:0}
+.ico-r svg{position:absolute;inset:0;transform:rotate(-90deg)}
+.ico-e{position:absolute;inset:0;display:grid;place-items:center;font-size:19px}
+.ico-n{font-size:10px;color:var(--t3);text-align:center;line-height:1.2;
+ overflow:hidden;text-overflow:ellipsis;white-space:nowrap;width:100%}
+.ico-p{font-size:10.5px;font-weight:700;color:var(--nc);font-variant-numeric:tabular-nums}
+.ico-add{width:50px;height:50px;border-radius:50%;border:1.5px dashed var(--bd2);
+ display:grid;place-items:center;font-size:22px;color:var(--t4);font-weight:300}
+
+/* ---------- ЦИФРЫ ПРОГРЕССА ---------- */
+.numhead{text-align:center;padding:6px 20px 22px}
+.numbig{font-family:var(--fd);font-weight:700;font-size:60px;letter-spacing:-.045em;line-height:1;
+ background:var(--accg);-webkit-background-clip:text;background-clip:text;color:transparent}
+.numsub{font-size:13.5px;color:var(--t3);margin-top:10px}
+.ntable{margin:0 20px;border:1px solid var(--bd);border-radius:var(--r);overflow:hidden}
+.nrow{display:grid;grid-template-columns:1fr auto auto auto;gap:10px;align-items:center;
+ padding:14px 15px;border-bottom:1px solid var(--bd)}
+.nrow:last-child{border-bottom:none}
+.nrow.head{background:var(--gl);padding:11px 15px}
+.nrow.head span{font-size:10.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--t4)}
+.n-name{display:flex;align-items:center;gap:9px;min-width:0}
+.n-nm{font-size:14px;font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.n-v{font-family:var(--fd);font-weight:700;font-size:15px;width:46px;text-align:right;font-variant-numeric:tabular-nums}
+.n-was{color:var(--t4)}
+.n-now{color:var(--nc)}
+.n-dt{font-size:11px;color:var(--t5);width:74px;text-align:right;font-variant-numeric:tabular-nums}
+.n-note{font-size:12.5px;color:var(--t4);padding:14px 20px 0;line-height:1.5;text-align:center}
+
+/* ---------- ИСТОЧНИКИ ДАННЫХ ---------- */
+.src{display:flex;align-items:center;gap:12px;padding:15px 16px;border-radius:var(--r);
+ background:var(--gl);border:1px solid var(--bd);margin-bottom:10px}
+.src-i{width:36px;height:36px;border-radius:11px;display:grid;place-items:center;font-size:15px;
+ background:rgba(113,61,255,.16);flex-shrink:0}
+.src-n{font-size:14.5px;font-weight:600}
+.src-u{font-size:11.5px;color:var(--t5);margin-top:2px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:180px}
+.src-st{font-size:11px;font-weight:700;padding:4px 9px;border-radius:var(--rp);flex-shrink:0}
+.src-st.ok{background:rgba(61,220,151,.16);color:var(--ok)}
+.src-st.err{background:rgba(255,107,157,.16);color:var(--bad)}
+.src-st.idle{background:var(--gl2);color:var(--t4)}
+
 /* ---------- DIALOG (замена prompt/confirm) ---------- */
 .dlg{position:absolute;inset:0;z-index:300;display:grid;place-items:center;padding:20px;
  opacity:0;pointer-events:none;transition:opacity .22s}
@@ -472,17 +535,6 @@ let TREE={
    N('Накопить на поездки',{kids:[N('Отдельный счёт',{done:true}),N('Пополнять 10%',{})]}),
    N('Маршруты',{kids:[N('Выбрать 3 страны',{}),N('Забронировать первую',{})]})]})]};
 
-const ACH=[
- {i:'⭐',n:'Первые шаги',d:'Выполнить 1 задачу',on:1,c:'rgba(61,220,151,.16)'},
- {i:'🏆',n:'Неделя в деле',d:'7 дней подряд',on:1,c:'rgba(245,196,81,.16)'},
- {i:'💎',n:'Две недели',d:'14 дней подряд',on:1,c:'rgba(91,156,255,.16)'},
- {i:'🔥',n:'Месяц силы',d:'30 дней подряд',on:0},
- {i:'🧠',n:'Мастер привычек',d:'50 дней подряд',on:0},
- {i:'🚀',n:'Не остановить',d:'100 дней подряд',on:0},
- {i:'🎯',n:'Первая большая',d:'Цель на 100%',on:1,c:'rgba(183,164,251,.18)'},
- {i:'🗺',n:'Вся карта',d:'6 областей жизни',on:1,c:'rgba(78,205,196,.16)'},
- {i:'📈',n:'Рост',d:'+20% за месяц',on:0}];
-const HIST={health:18,business:12,finance:8,self:21,love:5,travel:3};
 const HABITS=[
  {id:'h1',n:'Утренняя зарядка',streak:12,pct:86,today:true},
  {id:'h2',n:'Отбой до 23:00',streak:9,pct:74,today:false},
@@ -492,31 +544,40 @@ const HABITS=[
  {id:'h6',n:'Ужин без телефонов',streak:7,pct:68,today:false},
  {id:'h7',n:'Английский 30 минут',streak:12,pct:82,today:true},
  {id:'h8',n:'Чтение 20 страниц',streak:12,pct:79,today:true}];
-const USER={n:'',e:'',photo:'',onb:false,google:false};
+const USER={n:'',e:'',photo:'',onb:false,google:false,age:'',bio:''};
 /* главная вершина жизни — меняется в Профиле */
-const CORE={n:'Счастье',w:'Ради чего всё остальное',ic:'Я'};
+const CORE={n:'Счастье',w:'Ради чего всё остальное',ic:'Я',showIc:true};
+/* внешние источники данных (другие сайты) */
+let SOURCES=[];
 const CORE_PRESETS=['Счастье','Гармония','Свобода','Реализация','Любовь','Спокойствие','Смысл'];
 const SET={rem:true,snd:false,week:'Пн',theme:'#713dff',apiOn:true};
 const THEMES=['#713dff','#3ddc97','#5b9cff','#f5c451','#ff6b9d','#4ecdc4'];
-const STREAK=12,BEST=27,RATE=85;
 
 /* ============ SAVE / LOAD ============ */
 const KEY='lifemap_v1';
 const SEED=JSON.stringify({AREAS,TREE,UID});
 let ready=false;
 function save(){if(!ready)return;
- try{localStorage.setItem(KEY,JSON.stringify({AREAS,TREE,USER,SET,CORE,UID}));}catch(e){}}
+ try{localStorage.setItem(KEY,JSON.stringify({AREAS,TREE,USER,SET,CORE,SOURCES,UID}));}catch(e){}}
 function load(){
  try{const s=JSON.parse(localStorage.getItem(KEY)||'null');
   if(s&&Array.isArray(s.AREAS)){
    AREAS=s.AREAS;TREE=s.TREE||{};
    Object.assign(USER,s.USER||{});Object.assign(SET,s.SET||{});Object.assign(CORE,s.CORE||{});
+   SOURCES=s.SOURCES||[];
    UID=Math.max(s.UID||1,maxId()+1);
    AREAS.forEach(a=>{if(!TREE[a.id])TREE[a.id]=[];});
    return true;}}catch(e){}
  return false;}
 function maxId(){let m=0;const w=n=>{if(n.id>m)m=n.id;(n.kids||[]).forEach(w);};
  Object.values(TREE).forEach(l=>(l||[]).forEach(w));return m;}
+/* точка отсчёта: с какой даты и с какого процента начали — нужна для цифр прогресса */
+function today(){const d=new Date();
+ return d.getDate().toString().padStart(2,'0')+'.'+(d.getMonth()+1).toString().padStart(2,'0')+'.'+d.getFullYear();}
+function ensureBaseline(){let ch=false;
+ AREAS.forEach(a=>{if(a.since===undefined){a.since=today();a.base=areaPct(a.id);ch=true;}});
+ if(SET.since===undefined){SET.since=today();SET.base=lifePct();ch=true;}
+ if(ch)save();}
 async function resetAll(){
  const ok=await askConfirm({title:'Вернуть демо-данные?',
   text:'Все ваши цели будут заменены примером. Это нельзя отменить.',ok:'Вернуть'});
@@ -668,7 +729,7 @@ function render(){
  if(!USER.onb){$('#app').innerHTML=vWelcome();$('#tb').innerHTML='';return;}
  const c=cur();const R={map:vMap,goals:vGoals,prog:vProg,me:vMe,area:vArea,goal:vGoal,
   create:vCreate,motiv:vMotiv,habits:vHabits,settings:vSettings,integr:vIntegr,rem:vRem,
-  install:vInstall,core:vCore};
+  install:vInstall,core:vCore,me2:vMe2};
  $('#app').innerHTML=`<div class="scr">${R[c.s](c)}</div>`;
  $('#app').scrollTop=0;renderTabs();save();
  if(c.s==='map')initMap();
@@ -704,19 +765,28 @@ function vMap(){
   <div class="pills">
    <div class="pill"><div class="pill-i">🎯</div><div class="pill-v mono">${p}%</div><div class="pill-l">Пройдено к цели жизни</div></div>
    <div class="pill"><div class="pill-i">⏳</div><div class="pill-v mono">${100-p}%</div><div class="pill-l">Осталось пройти</div></div></div>
+  ${CORE.w?`<button class="credo" style="width:calc(100% - 40px);text-align:left" onclick="push('core')">
+    <span class="credo-l">${esc(CORE.n)} · моё кредо</span>
+    <span class="credo-t" style="display:block">${esc(CORE.w)}</span></button>`:
+   `<button class="credo" style="width:calc(100% - 40px);text-align:left" onclick="push('core')">
+    <span class="credo-l">Главная цель</span>
+    <span class="credo-e" style="display:block;margin-top:6px">Напиши, ради чего всё остальное →</span></button>`}
   <div class="mapwrap" id="mw">
    <div class="mapcv" id="mc"><svg class="wires" id="wires"></svg><div id="mnodes"></div></div>
    <button class="fab" onclick="push('create',{step:0,d:{}})">+</button>
    <div class="maphint">Тяни, чтобы двигать · щипок для масштаба</div></div>
   <div class="sec-h"><span class="sec-t">Области жизни</span><span class="sec-x">${AREAS.length}</span></div>
-  <div class="rows">${AREAS.map(a=>{const ap=areaPct(a.id);
-   return `<button class="row" style="--nc:${a.c};--nb:${a.c}22" onclick="push('area',{a:'${a.id}'})">
-    <span class="row-i">${a.ic}</span>
-    <span class="row-b"><span class="row-n">${a.n}</span>
-     <span class="bar"><i style="width:${ap}%"></i></span></span>
-    <span class="row-p">${ap}%</span><span class="row-c">›</span></button>`;}).join('')
-   ||'<div class="empty"><div class="empty-i">◇</div><div class="empty-t">Нет областей</div><div class="empty-s">Добавь первую область жизни.</div></div>'}</div>
-  <div style="padding:14px 20px 0"><button class="btn dash" onclick="addArea()">+ Новая область жизни</button></div>`;
+  <div class="icons">${AREAS.map(a=>{const ap=areaPct(a.id),r=22,C=2*Math.PI*r;
+   return `<button class="ico-a" style="--nc:${a.c}" onclick="push('area',{a:'${a.id}'})" title="${esc(a.n)} ${ap}%">
+    <span class="ico-r">
+     <svg width="50" height="50"><circle cx="25" cy="25" r="${r}" fill="none" stroke="rgba(255,255,255,.09)" stroke-width="3"/>
+      <circle cx="25" cy="25" r="${r}" fill="none" stroke="${a.c}" stroke-width="3" stroke-linecap="round"
+       stroke-dasharray="${C.toFixed(1)}" stroke-dashoffset="${(C-C*ap/100).toFixed(1)}"/></svg>
+     <span class="ico-e">${a.ic}</span></span>
+    <span class="ico-p">${ap}%</span>
+    <span class="ico-n">${esc(a.n)}</span></button>`;}).join('')}
+   <button class="ico-a" onclick="addArea()" title="Новая область">
+    <span class="ico-add">+</span><span class="ico-n" style="margin-top:4px">Добавить</span></button></div>`;
 }
 function initMap(){let t=0;const run=()=>{const w=$('#mw');if(!w||cur().s!=='map')return;
  if(!w.clientWidth&&t++<60){requestAnimationFrame(run);return;}drawMap();};
@@ -727,10 +797,12 @@ document.addEventListener('visibilitychange',()=>{
 function drawMap(){
  const w=$('#mw'),sv=$('#wires'),nb=$('#mnodes');if(!w||!sv||!nb)return;
  const W=w.clientWidth||390,H=w.clientHeight||426,cx=W/2,cy=H/2-8,R=Math.min(W,H)*.335;
- const cn=esc(CORE.n).toUpperCase();
+ const cn=esc(CORE.n),showIc=CORE.showIc!==false&&CORE.ic;
  let wires='',nodes=`<div class="core" style="left:${cx}px;top:${cy}px" onclick="push('core')">
-  <div><div class="core-i">${esc(CORE.ic||'Я')}</div>
-  <div class="core-l" style="${cn.length>10?'font-size:7.5px;letter-spacing:.14em':''}">${cn}</div></div></div>`;
+  <div>${showIc?`<div class="core-i">${esc(CORE.ic)}</div>
+   <div class="core-l" style="${cn.length>10?'font-size:7.5px;letter-spacing:.14em':''}">${cn.toUpperCase()}</div>`
+  :`<div class="core-i" style="font-size:${cn.length>8?15:cn.length>6?18:21}px;line-height:1.15;
+     max-width:88px;overflow-wrap:break-word">${cn}</div>`}</div></div>`;
  AREAS.forEach((a,i)=>{const ang=-Math.PI/2+i*(Math.PI*2/AREAS.length);
   const x=cx+R*Math.cos(ang),y=cy+R*Math.sin(ang),p=areaPct(a.id),d=`M${cx},${cy} L${x},${y}`;
   wires+=`<path class="wireb" d="${d}" stroke="${a.c}"/><path class="wire" d="${d}" stroke="${a.c}"/>
@@ -797,7 +869,11 @@ function vArea(c){
  return `<div class="navbar"><button class="backb" onclick="pop()">‹</button>
    <div class="nb-c"><div class="nb-t">${a.ic} ${a.n}</div><div class="nb-s">${p}% выполнено</div></div>
    <button class="icobtn" onclick="sheetArea('${a.id}')">⋯</button></div>
-  <div class="lead" style="text-align:center;padding-bottom:20px">${esc(a.why)}</div>
+  <button class="credo c2" style="--nc:${a.c};width:calc(100% - 40px);text-align:left"
+    onclick="editAreaWhy('${a.id}')">
+   <span class="credo-l">Зачем мне ${esc(a.n).toLowerCase()}</span>
+   ${a.why?`<span class="credo-t" style="display:block">${esc(a.why)}</span>`
+          :`<span class="credo-e" style="display:block;margin-top:6px">Напиши, что эта область даёт твоей жизни →</span>`}</button>
   <div class="sec-h"><span class="sec-t">Большие цели</span><span class="sec-x">${g.length}</span></div>
   <div class="rows">${g.length?g.map(n=>{const np=pct(n),lv=leaves(n),dn=lv.filter(x=>x.done).length,
     sub=(n.kids||[]).filter(x=>(x.kids||[]).length).length;
@@ -932,95 +1008,90 @@ function saveMotiv(id){const n=nodeById(id);n.reward=$('#rw').value.trim();n.con
  pop();toast('Мотивация сохранена');}
 
 /* ============ PROGRESS ============ */
-function vProg(c){const t=c.t||'p',per=c.per||'Месяц';
- return `<div class="scr-t">Твой прогресс</div>
-  <div class="tabs"><button class="tab${t==='p'?' on':''}" onclick="setPT('p')">Прогресс</button>
-   <button class="tab${t==='s'?' on':''}" onclick="setPT('s')">Серии</button>
-   <button class="tab${t==='a'?' on':''}" onclick="setPT('a')">Награды</button>
-   <button class="tab${t==='h'?' on':''}" onclick="setPT('h')">История</button></div>
-  ${t==='p'?pTab(per):t==='s'?sTab():t==='a'?aTab():hTab(per)}`;}
-function setPT(t){cur().t=t;render();}
-function setPer(p){cur().per=p;render();}
-function perSw(per){return `<div style="display:flex;gap:8px;padding:0 20px 20px;flex-wrap:wrap">${['Неделя','Месяц','Год','Всё время']
- .map(p=>`<button class="sgb${p===per?' on':''}" onclick="setPer('${p}')">${p}</button>`).join('')}</div>`;}
-function pTab(per){const lc=allLeaves();
- return perSw(per)+`<div class="ring-w">${ring(lifePct(),'#8562ff',100)}
-   <div class="ring-s"><b>Общий прогресс</b><br>за период «${per.toLowerCase()}»<br>
-   ${countGoals()} активных целей · ${lc.d}/${lc.t} задач</div></div>
-  <div class="sec-h"><span class="sec-t">По областям</span><span class="sec-x">нажми, чтобы открыть</span></div>
-  <div class="rows">${AREAS.map(a=>{const p=areaPct(a.id);
-   return `<button class="row" style="--nc:${a.c};--nb:${a.c}22" onclick="push('area',{a:'${a.id}'})">
-    <span class="row-i">${a.ic}</span>
-    <span class="row-b"><span class="row-n">${a.n}</span><span class="bar"><i style="width:${p}%"></i></span></span>
-    <span class="row-p">${p}%</span>
-    <span class="row-c" onclick="event.stopPropagation();sheetArea('${a.id}')">⋯</span></button>`;}).join('')}</div>`;}
-function sTab(){
- const d=new Date(),y=d.getFullYear(),m=d.getMonth(),td=d.getDate();
- const first=(new Date(y,m,1).getDay()+6)%7,dim=new Date(y,m+1,0).getDate(),miss=[2,9,17,23];
- let cells=['Пн','Вт','Ср','Чт','Пт','Сб','Вс'].map(x=>`<div class="cal-d">${x}</div>`).join('');
- for(let i=0;i<first;i++)cells+='<div class="cal-c e"></div>';
- for(let i=1;i<=dim;i++){let cl='cal-c';if(i===td)cl+=' t';else if(i<td)cl+=miss.includes(i)?' m':' d';
-  cells+=`<div class="${cl}">${i}</div>`;}
- const MN=['Январь','Февраль','Март','Апрель','Май','Июнь','Июль','Август','Сентябрь','Октябрь','Ноябрь','Декабрь'];
- return `<div class="lead" style="text-align:center">Твоя сила — в постоянстве</div>
-  <div class="pills" style="grid-template-columns:repeat(3,1fr)">
-   <div class="pill"><div class="pill-i">🔥</div><div class="pill-v mono">${STREAK}</div><div class="pill-l">Текущая</div></div>
-   <div class="pill"><div class="pill-i">🏆</div><div class="pill-v mono">${BEST}</div><div class="pill-l">Максимум</div></div>
-   <div class="pill"><div class="pill-i">⭐</div><div class="pill-v mono">${RATE}%</div><div class="pill-l">Успешность</div></div></div>
-  <div class="sec-h"><span class="sec-t">Календарь серий</span></div>
-  <div class="cal"><div class="cal-m">${MN[m]} ${y}</div><div class="cal-g">${cells}</div>
-   <div class="legend"><span><i style="background:var(--health)"></i>Выполнено</span>
-    <span><i style="background:var(--bad)"></i>Пропуск</span>
-    <span><i style="background:var(--acc2)"></i>Сегодня</span></div></div>`;}
-function aTab(){const got=ACH.filter(a=>a.on).length;
- return `<div class="lead" style="text-align:center">Получено ${got} из ${ACH.length}</div>
-  <div class="ach-g">${ACH.map(a=>`<div class="ach${a.on?'':' lock'}" style="--ab:${a.c||''}"
-   onclick="toast('${a.on?'Получено: ':'Ещё не открыто: '}${a.n}')">
-   <div class="ach-i">${a.on?a.i:'🔒'}</div><div class="ach-n">${a.n}</div><div class="ach-d">${a.d}</div></div>`).join('')}</div>`;}
-function hTab(per){const now=new Date(),from=new Date(now);from.setMonth(now.getMonth()-1);
- const MM=['января','февраля','марта','апреля','мая','июня','июля','августа','сентября','октября','ноября','декабря'];
- const f=d=>d.getDate()+' '+MM[d.getMonth()];
- return perSw(per)+`<div style="text-align:center;padding:0 20px 6px;font-size:15px;font-weight:600">Что изменилось</div>
-  <div style="text-align:center;padding:0 20px 20px;font-size:13px;color:var(--t5)">${f(from)} → ${f(now)}</div>
-  <div class="rows">${AREAS.map(a=>`<div class="hrow" style="--nc:${a.c}"><span class="hdot"></span>
-   <span class="hn">${a.ic} ${a.n}</span><span class="hd">↑ ${HIST[a.id]||0}%</span></div>`).join('')}</div>
-  <div class="note" style="margin-top:20px">Ты видишь не только сегодняшнее состояние, но и каким был раньше — и каким стал сейчас.</div>`;}
-
-/* ============ PROFILE ============ */
-function vMe(){const got=ACH.filter(a=>a.on).length;
+function vProg(){
+ const now=lifePct(),was=SET.base||0,d=now-was,lc=allLeaves();
+ return `<div class="scr-t">Прогресс</div>
+  <div class="numhead">
+   <div class="numbig">${now}%</div>
+   <div class="numsub">было ${was}% · ${d>0?'+'+d:d}% с ${esc(SET.since||today())}</div></div>
+  <div class="ntable">
+   <div class="nrow head"><span>Область</span><span style="width:46px;text-align:right">Было</span>
+    <span style="width:46px;text-align:right">Стало</span><span style="width:74px;text-align:right">С даты</span></div>
+   ${AREAS.map(a=>{const p=areaPct(a.id),b=a.base||0;
+    return `<div class="nrow" style="--nc:${a.c}">
+     <span class="n-name"><span>${a.ic}</span><span class="n-nm">${esc(a.n)}</span></span>
+     <span class="n-v n-was">${b}%</span><span class="n-v n-now">${p}%</span>
+     <span class="n-dt">${esc(a.since||'—')}</span></div>`;}).join('')
+   ||'<div class="nrow"><span class="n-nm" style="color:var(--t4)">Областей пока нет</span></div>'}
+  </div>
+  <div class="sec-h"><span class="sec-t">Итого</span></div>
+  <div class="ntable">
+   <div class="nrow"><span class="n-name"><span class="n-nm">Задач закрыто</span></span>
+    <span class="n-v" style="width:auto;color:var(--t1)">${lc.d} из ${lc.t}</span></div>
+   <div class="nrow"><span class="n-name"><span class="n-nm">Целей в работе</span></span>
+    <span class="n-v" style="width:auto;color:var(--t1)">${countGoals()}</span></div>
+   <div class="nrow"><span class="n-name"><span class="n-nm">Областей жизни</span></span>
+    <span class="n-v" style="width:auto;color:var(--t1)">${AREAS.length}</span></div>
+   <div class="nrow"><span class="n-name"><span class="n-nm">Начало отсчёта</span></span>
+    <span class="n-v" style="width:auto;color:var(--t1);font-size:13px">${esc(SET.since||today())}</span></div>
+  </div>
+  <div class="n-note">«Было» — сколько было в день, когда область появилась. Цифры обновляются сами, когда закрываешь задачи.</div>`;}
+function vMe(){const lc=allLeaves();
  return `<div class="scr-t">Профиль</div>
-  <div class="pf"><div class="pf-a" style="${USER.photo?`background-image:url(${USER.photo})`:''}"
-    onclick="document.getElementById('ph').click()">${USER.photo?'':USER.n[0]}</div>
-   <div style="flex:1;min-width:0"><div class="pf-n">${esc(USER.n)}</div>
-    <div class="pf-e">${USER.google&&USER.e?esc(USER.e):'данные на этом устройстве'}</div></div>
-   <button class="icobtn" onclick="editUser()">✎</button>
+  <div class="pf">
+   <div class="pf-a" style="${USER.photo?`background-image:url(${USER.photo});`:'background:var(--gl);border:1px solid var(--bd);'}"
+     onclick="document.getElementById('ph').click()">${USER.photo?'':logo(40)}
+    <span class="pf-plus">+</span></div>
+   <div style="flex:1;min-width:0"><div class="pf-n">${esc(USER.n)||'Без имени'}</div>
+    <div class="pf-e">${[USER.age,USER.google&&USER.e?USER.e:''].filter(Boolean).join(' · ')||'данные на этом устройстве'}</div></div>
+   <button class="icobtn" onclick="push('me2')">✎</button>
    <input type="file" id="ph" accept="image/*" hidden onchange="setPhoto(event)"></div>
+  ${USER.bio?`<div class="pf-bio">${esc(USER.bio)}</div>`:''}
   <div class="pf-s">
-   <div class="pf-si"><div class="pf-sv mono">${STREAK}</div><div class="pf-sl">Серия</div></div>
-   <div class="pf-si"><div class="pf-sv mono">${got}</div><div class="pf-sl">Достижений</div></div>
-   <div class="pf-si"><div class="pf-sv mono">${lifePct()}%</div><div class="pf-sl">Прогресс жизни</div></div></div>
+   <div class="pf-si"><div class="pf-sv mono">${lifePct()}%</div><div class="pf-sl">Прогресс жизни</div></div>
+   <div class="pf-si"><div class="pf-sv mono">${countGoals()}</div><div class="pf-sl">Целей в работе</div></div>
+   <div class="pf-si"><div class="pf-sv mono">${lc.d}/${lc.t}</div><div class="pf-sl">Задач закрыто</div></div></div>
   <div class="menu">
+   <button class="mi" onclick="push('me2')"><span class="mi-i">👤</span><span class="mi-n">Мои данные</span><span class="mi-v">имя, возраст, о себе</span><span class="row-c">›</span></button>
    <button class="mi" onclick="push('core')"><span class="mi-i">🗼</span><span class="mi-n">Главная цель жизни</span><span class="mi-v">${esc(CORE.n)}</span><span class="row-c">›</span></button>
    <button class="mi" onclick="go('goals')"><span class="mi-i">🎯</span><span class="mi-n">Цели</span><span class="mi-v">${countGoals()} активных</span><span class="row-c">›</span></button>
-   <button class="mi" onclick="push('integr')"><span class="mi-i">🔗</span><span class="mi-n">Подключённые привычки</span><span class="mi-v">${HABITS.length}</span><span class="row-c">›</span></button>
    <button class="mi" onclick="push('rem')"><span class="mi-i">🔔</span><span class="mi-n">Напоминания</span><span class="mi-v">${SET.rem?'вкл':'выкл'}</span><span class="row-c">›</span></button>
    <div class="msep"></div>
    <button class="mi" onclick="push('settings')"><span class="mi-i">⚙️</span><span class="mi-n">Настройки</span><span class="row-c">›</span></button>
-   <button class="mi" onclick="push('integr')"><span class="mi-i">🔌</span><span class="mi-n">API и интеграции</span><span class="mi-v">${SET.apiOn?'подключено':'выкл'}</span><span class="row-c">›</span></button>
-   <button class="mi" onclick="push('install')"><span class="mi-i">📲</span><span class="mi-n">Установить на телефон</span><span class="row-c">›</span></button>
-   <button class="mi" onclick="backup()"><span class="mi-i">☁️</span><span class="mi-n">Резервная копия</span><span class="row-c">›</span></button>
-   <button class="mi" onclick="sheetHelp()"><span class="mi-i">💬</span><span class="mi-n">Помощь и поддержка</span><span class="row-c">›</span></button>
+   <button class="mi" onclick="push('integr')"><span class="mi-i">🔌</span><span class="mi-n">Данные из других сайтов</span><span class="mi-v">${SOURCES.length||HABITS.length}</span><span class="row-c">›</span></button>
    <div class="msep"></div>
    <button class="mi red" onclick="logout()"><span class="mi-i">⏻</span><span class="mi-n">Выйти из аккаунта</span></button></div>
-  <div style="display:flex;flex-direction:column;align-items:center;gap:8px;padding:30px 20px 10px;opacity:.5">
-   ${logo(38)}<div class="brand-s">МАЯК · EST. 2024</div></div>`;}
-async function editUser(){const v=await askText({title:'Имя',label:'Как тебя зовут',value:USER.n,ph:'Твоё имя'});
- if(v&&v.trim()){USER.n=v.trim();render();toast('Имя обновлено');}}
+  <div style="display:flex;flex-direction:column;align-items:center;gap:8px;padding:30px 20px 10px;opacity:.45">
+   ${logo(38)}<div class="brand-s">МАЯК · EST. 2024</div>
+   <div style="font-size:11px;color:var(--t5);margin-top:2px">сохраняется автоматически</div></div>`;}
+
+/* ---- мои данные ---- */
+function vMe2(){
+ return `<div class="navbar"><button class="backb" onclick="pop()">‹</button>
+   <div class="nb-c"><div class="nb-t">Мои данные</div></div><div style="width:36px"></div></div>
+  <div style="display:grid;place-items:center;padding:4px 20px 22px">
+   <div class="pf-a" style="width:92px;height:92px;font-size:34px;${USER.photo?`background-image:url(${USER.photo});`:'background:var(--gl);border:1px solid var(--bd);'}"
+     onclick="document.getElementById('ph2').click()">${USER.photo?'':logo(56)}
+    <span class="pf-plus">+</span></div>
+   <input type="file" id="ph2" accept="image/*" hidden onchange="setPhoto(event)">
+   <div class="hint" style="text-align:center">Нажми, чтобы поставить своё фото</div>
+   ${USER.photo?`<button class="btn o sm" style="margin-top:10px" onclick="clearPhoto()">Убрать фото</button>`:''}</div>
+  <div class="pad">
+   <div class="wl-lbl">Имя</div>
+   <input class="inp" id="uName" value="${esc(USER.n)}" placeholder="Как тебя зовут">
+   <div class="wl-lbl" style="margin-top:20px">Возраст</div>
+   <input class="inp" id="uAge" value="${esc(USER.age||'')}" placeholder="Например: 30 лет">
+   <div class="wl-lbl" style="margin-top:20px">О себе</div>
+   <textarea class="txa" id="uBio" placeholder="Пара слов о себе — чем занимаешься, к чему идёшь">${esc(USER.bio||'')}</textarea>
+   <div class="hint">Показывается в профиле под именем</div>
+   <button class="btn p" style="margin-top:22px" onclick="saveMe()">Сохранить</button></div>`;}
+function saveMe(){
+ const n=$('#uName').value.trim();if(!n)return toast('Впиши имя');
+ USER.n=n;USER.age=$('#uAge').value.trim();USER.bio=$('#uBio').value.trim();
+ pop();toast('Профиль обновлён');}
+function clearPhoto(){USER.photo='';render();toast('Фото убрано');}
 function setPhoto(e){const f=e.target.files[0];if(!f)return;const r=new FileReader();
  r.onload=ev=>{USER.photo=ev.target.result;render();toast('Фото обновлено');};r.readAsDataURL(f);}
-function backup(){const data=JSON.stringify({AREAS,TREE,USER},null,1);
- if(navigator.clipboard)navigator.clipboard.writeText(data).then(()=>toast('Копия скопирована в буфер'),()=>toast('Копия готова'));
- else toast('Копия готова');}
 async function logout(){
  const ok=await askConfirm({title:'Выйти из аккаунта?',
   text:'Имя сбросится, цели останутся на этом устройстве.',ok:'Выйти'});
@@ -1072,18 +1143,52 @@ async function wipe(){
 /* ============ INTEGRATIONS ============ */
 function vIntegr(){
  return `<div class="navbar"><button class="backb" onclick="pop()">‹</button>
-   <div class="nb-c"><div class="nb-t">API и интеграции</div></div><div style="width:36px"></div></div>
-  <div class="pad"><div class="srow"><span class="hab-i">🔗</span>
+   <div class="nb-c"><div class="nb-t">Данные из других сайтов</div></div><div style="width:36px"></div></div>
+  <div class="lead">Маяк может подтягивать данные из ваших других приложений — трекера привычек, таблиц, чего угодно, что отдаёт JSON по ссылке.</div>
+  <div class="sec-h"><span class="sec-t">Трекер привычек</span></div>
+  <div class="pad"><div class="srow"><span class="src-i">🔗</span>
    <div class="s-b"><div class="s-n">Habit Tracker</div>
     <div class="s-d">${SET.apiOn?'Подключено · '+HABITS.length+' привычек':'Отключено'}</div></div>
    <button class="sw${SET.apiOn?' on':''}" onclick="tgSet('apiOn')"><i></i></button></div></div>
-  <div class="note" style="margin:6px 20px 18px">Привычки не создаются в этом приложении. Оно получает по API статус, серию, процент и историю — управление остаётся во внешнем трекере.</div>
+  <div class="sec-h"><span class="sec-t">Свои источники</span><span class="sec-x">${SOURCES.length}</span></div>
+  <div class="pad">
+   ${SOURCES.length?SOURCES.map((s,i)=>`<div class="src">
+     <span class="src-i">🌐</span>
+     <span class="row-b"><span class="src-n">${esc(s.n)}</span><span class="src-u">${esc(s.url)}</span></span>
+     <span class="src-st ${s.st||'idle'}">${s.st==='ok'?'работает':s.st==='err'?'ошибка':'не проверен'}</span>
+     <button class="gact del" style="width:26px;height:26px" onclick="delSource(${i})">🗑</button></div>`).join('')
+   :`<div class="empty" style="padding:26px 10px"><div class="empty-i">🌐</div>
+     <div class="empty-t">Источников пока нет</div>
+     <div class="empty-s">Добавь ссылку на JSON — Маяк будет брать оттуда данные.</div></div>`}
+   <button class="btn dash" onclick="addSource()">+ Добавить источник</button>
+   ${SOURCES.length?`<button class="btn o" style="margin-top:10px" onclick="checkSources()">Проверить все</button>`:''}
+  </div>
+  <div class="note" style="margin-top:16px">Чужой сайт должен разрешать обращения со стороны (заголовок CORS). Если он этого не делает, браузер заблокирует запрос — тогда нужен экспорт файлом.</div>
   ${SET.apiOn?`<div class="sec-h"><span class="sec-t">Привычки из API</span><span class="sec-x">${HABITS.length}</span></div>
    <div class="pad">${HABITS.map(h=>`<div class="hab"><span class="hab-i">${h.today?'✅':'⭕'}</span>
     <span class="row-b"><span class="hab-n">${h.n}</span><span class="hab-m">${h.pct}% выполнения</span></span>
-    <span class="hab-s">🔥${h.streak}</span></div>`).join('')}</div>`
-  :`<div class="empty"><div class="empty-i">🔌</div><div class="empty-t">Интеграция выключена</div>
-    <div class="empty-s">Включи переключатель выше, чтобы получать привычки.</div></div>`}`;}
+    <span class="hab-s">🔥${h.streak}</span></div>`).join('')}</div>`:''}`;}
+async function addSource(){
+ const n=await askText({title:'Новый источник',note:'Ссылка, по которой отдаётся JSON с данными.',
+  label:'Название',ph:'Например: Мой трекер',ok:'Далее'});
+ if(!n||!n.trim())return;
+ const u=await askText({title:'Ссылка',label:'Адрес',ph:'https://сайт/data.json',ok:'Добавить'});
+ if(!u||!u.trim())return;
+ SOURCES.push({n:n.trim(),url:u.trim(),st:'idle'});
+ render();toast('Источник добавлен');checkSources();}
+async function delSource(i){
+ const ok=await askConfirm({title:`Удалить «${SOURCES[i].n}»?`,text:'Источник перестанет опрашиваться.'});
+ if(!ok)return;SOURCES.splice(i,1);render();toast('Источник удалён');}
+async function checkSources(){
+ if(!SOURCES.length)return;
+ toast('Проверяю источники…');
+ await Promise.all(SOURCES.map(async s=>{
+  try{const r=await fetch(s.url,{cache:'no-store'});s.st=r.ok?'ok':'err';
+   if(r.ok){try{s.data=await r.json();}catch(e){s.st='err';}}}
+  catch(e){s.st='err';}}));
+ render();
+ const ok=SOURCES.filter(s=>s.st==='ok').length;
+ toast(ok+' из '+SOURCES.length+' работают');}
 
 /* ============ MAIN GOAL OF LIFE ============ */
 function vCore(){
@@ -1098,17 +1203,26 @@ function vCore(){
    <input class="inp" id="coreN" value="${esc(CORE.n)}" placeholder="Счастье" maxlength="24">
    <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:12px">${CORE_PRESETS.map(x=>
      `<button class="sgb${CORE.n===x?' on':''}" onclick="pickCore('${x}')">${x}</button>`).join('')}</div>
-   <div class="wl-lbl" style="margin-top:22px">Что она для тебя значит</div>
+   <div class="wl-lbl" style="margin-top:22px">Твоё кредо</div>
    <textarea class="txa" id="coreW" placeholder="Ради чего всё остальное">${esc(CORE.w)}</textarea>
-   <div class="wl-lbl" style="margin-top:22px">Знак в центре карты</div>
-   <input class="inp" id="coreI" value="${esc(CORE.ic)}" placeholder="Я" maxlength="2">
-   <div class="hint">Одна-две буквы или эмодзи — то, что стоит в самом центре</div>
+   <div class="hint">Показывается прямо на карте — первое, что видишь при входе</div>
+   <div class="srow" style="margin-top:22px">
+    <div class="s-b"><div class="s-n">Значок в центре карты</div>
+     <div class="s-d">Если выключить — в центре будет только название вершины</div></div>
+    <button class="sw${CORE.showIc!==false?' on':''}" onclick="tgCoreIc(this)"><i></i></button></div>
+   <div id="coreIcWrap" style="display:${CORE.showIc!==false?'block':'none'}">
+    <div class="wl-lbl">Какой значок</div>
+    <input class="inp" id="coreI" value="${esc(CORE.ic)}" placeholder="Я" maxlength="2">
+    <div class="hint">Одна-две буквы или эмодзи</div></div>
    <button class="btn p" style="margin-top:22px" onclick="saveCore()">Сохранить</button></div>`;}
+function tgCoreIc(b){CORE.showIc=!(CORE.showIc!==false);b.classList.toggle('on',CORE.showIc!==false);
+ const w=$('#coreIcWrap');if(w)w.style.display=CORE.showIc!==false?'block':'none';}
 function pickCore(x){$('#coreN').value=x;
  [...document.querySelectorAll('#app .sgb')].forEach(b=>b.classList.toggle('on',b.textContent===x));}
 function saveCore(){
  const n=$('#coreN').value.trim();if(!n)return toast('Напиши название вершины');
- CORE.n=n;CORE.w=$('#coreW').value.trim();CORE.ic=($('#coreI').value.trim()||'Я').slice(0,2);
+ CORE.n=n;CORE.w=$('#coreW').value.trim();
+ const ic=$('#coreI');if(ic)CORE.ic=(ic.value.trim()||'Я').slice(0,2);
  pop();toast('Главная цель обновлена');}
 
 /* ============ INSTALL (PWA) ============ */
@@ -1229,7 +1343,7 @@ function cNext(){const c=cur(),d=c.d;
 async function addArea(){
  const r=await askArea();if(!r)return;
  const id='a'+Date.now();
- AREAS.push({id,n:r.n,ic:r.ic,c:THEMES[AREAS.length%THEMES.length],why:'Новая область жизни'});
+ AREAS.push({id,n:r.n,ic:r.ic,c:THEMES[AREAS.length%THEMES.length],why:'',since:today(),base:0});
  TREE[id]=[];render();toast('Область «'+r.n+'» добавлена');}
 async function renameArea(id){const a=area(id);if(!a)return;
  const v=await askText({title:'Название области',label:'Как называется',value:a.n});
@@ -1270,10 +1384,6 @@ function sheetGoal(id){const n=nodeById(id);
   <button class="mi" onclick="closeSheet();renameNode(${id})"><span class="mi-i">✎</span><span class="mi-n">Переименовать</span></button>
   <button class="mi" onclick="closeSheet();editWhy(${id})"><span class="mi-i">💭</span><span class="mi-n">Изменить «зачем»</span></button>
   <button class="mi red" onclick="closeSheet();delNode(${id})"><span class="mi-i">🗑</span><span class="mi-n">Удалить цель</span></button>`);}
-function sheetHelp(){openSheet('Помощь','Как устроено приложение',
- `<button class="mi" onclick="closeSheet();toast(CORE.ic+' → '+CORE.n+' → Области → Цели → Задачи')"><span class="mi-i">🗺</span><span class="mi-n">Структура целей</span></button>
-  <button class="mi" onclick="closeSheet();push('integr')"><span class="mi-i">🔗</span><span class="mi-n">Как подключить привычки</span></button>
-  <button class="mi" onclick="closeSheet();toast('Напиши нам: help@lifemap.app')"><span class="mi-i">✉️</span><span class="mi-n">Написать в поддержку</span></button>`);}
 async function renameNode(id){const n=nodeById(id);if(!n)return;
  const v=await askText({title:'Название цели',label:'Как называется',value:n.n});
  if(v&&v.trim()){n.n=v.trim();render();toast('Переименовано');}}
@@ -1306,7 +1416,7 @@ async function delNode(id){const n=nodeById(id);if(!n)return;
 })();
 
 /* BOOT */
-load();ready=true;applyAcc();render();
+load();ready=true;applyAcc();ensureBaseline();render();
 </script>
 </body>
 </html>
