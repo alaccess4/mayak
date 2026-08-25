@@ -271,11 +271,14 @@ input,textarea{font:inherit;color:inherit}
 .stp.on>i,.stp.dn>i{width:100%}
 .q{font-family:var(--fd);font-weight:700;font-size:26px;letter-spacing:-.03em;line-height:1.22;padding:0 20px 10px}
 .qs{font-size:14px;color:var(--t3);padding:0 20px 24px;line-height:1.55}
-.inp{width:100%;background:var(--gl);border:1px solid var(--bd);border-radius:var(--r);padding:16px;
- font-size:16px;transition:.2s}
-.inp:focus{outline:none;border-color:rgba(133,98,255,.55);background:var(--gl2)}
-.inp::placeholder{color:var(--t5)}
-textarea.inp{min-height:108px;resize:none;line-height:1.55}
+.inp,.txa{width:100%;background:rgba(255,255,255,.06);border:1px solid var(--bd);border-radius:var(--r);
+ padding:16px;font-size:16px;color:var(--t1);transition:.2s;-webkit-text-fill-color:var(--t1);
+ font-family:var(--fu);line-height:1.5;display:block}
+.inp:focus,.txa:focus{outline:none;border-color:var(--acc2);background:rgba(255,255,255,.1);
+ box-shadow:0 0 0 3px rgba(113,61,255,.18)}
+.inp::placeholder,.txa::placeholder{color:var(--t5);-webkit-text-fill-color:var(--t5);opacity:1}
+.txa,textarea.inp{min-height:112px;resize:vertical}
+.inp:disabled,.txa:disabled{opacity:.5}
 .hint{font-size:13px;color:var(--t5);padding:10px 4px 0}
 .areag{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 .areab{display:flex;align-items:center;gap:10px;padding:15px 14px;border-radius:var(--r);background:var(--gl);
@@ -373,6 +376,42 @@ textarea.inp{min-height:108px;resize:none;line-height:1.55}
 .inst-h{display:flex;align-items:center;gap:12px;margin-bottom:14px}
 .inst-n{font-size:15px;font-weight:600}
 .inst-s{font-size:13px;color:var(--t4);margin-top:2px}
+
+/* ---------- ЗАВЕРШЕНИЕ ЦЕЛИ, ПРЯНИК И КНУТ ---------- */
+.badge{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:700;
+ padding:5px 10px;border-radius:var(--rp);white-space:nowrap;flex-shrink:0}
+.badge.done{background:rgba(61,220,151,.18);color:var(--ok)}
+.badge.late{background:rgba(255,107,157,.18);color:var(--bad)}
+.badge.run{background:rgba(113,61,255,.18);color:var(--acc3)}
+.mini{display:flex;gap:7px;flex-wrap:wrap;margin-top:11px}
+.mini-c{display:inline-flex;align-items:center;gap:6px;font-size:12px;padding:6px 11px;
+ border-radius:var(--rp);max-width:100%;overflow:hidden}
+.mini-c span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.mini-c.car{background:rgba(245,196,81,.14);color:#f5c451;border:1px solid rgba(245,196,81,.26)}
+.mini-c.stk{background:rgba(255,107,157,.12);color:#ff8fb4;border:1px solid rgba(255,107,157,.24)}
+.mini-c.off{background:var(--gl);color:var(--t5);border:1px dashed var(--bd2)}
+.gcard.fin{border-color:rgba(61,220,151,.34);background:linear-gradient(135deg,rgba(61,220,151,.09),var(--gl) 60%)}
+
+/* итог по завершённой цели */
+.fin-box{margin:0 20px 16px;border-radius:var(--r);overflow:hidden;
+ border:1px solid rgba(61,220,151,.32);background:linear-gradient(135deg,rgba(61,220,151,.14),rgba(61,220,151,.03))}
+.fin-box.bad{border-color:rgba(255,107,157,.32);
+ background:linear-gradient(135deg,rgba(255,107,157,.13),rgba(255,107,157,.03))}
+.fin-h{display:flex;align-items:center;gap:12px;padding:17px 18px 13px}
+.fin-i{width:42px;height:42px;border-radius:13px;display:grid;place-items:center;font-size:20px;
+ background:rgba(61,220,151,.18);flex-shrink:0}
+.fin-box.bad .fin-i{background:rgba(255,107,157,.18)}
+.fin-t{font-family:var(--fd);font-weight:700;font-size:17px;letter-spacing:-.02em}
+.fin-s{font-size:12.5px;color:var(--t3);margin-top:3px}
+.fin-b{padding:0 18px 18px}
+.fin-prize{padding:14px 16px;border-radius:var(--ro);background:rgba(0,0,0,.24);margin-bottom:12px}
+.fin-pl{font-size:10.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#f5c451}
+.fin-box.bad .fin-pl{color:#ff8fb4}
+.fin-pt{font-size:15px;color:var(--t1);margin-top:6px;line-height:1.5}
+.fin-note{font-size:13.5px;color:var(--t2);line-height:1.55;padding:12px 14px;border-radius:var(--ro);
+ background:rgba(0,0,0,.2);margin-top:10px}
+.fin-note b{display:block;font-size:10.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+ color:var(--t4);margin-bottom:6px}
 
 /* ---------- КРЕДО (зачем эта область / вершина) ---------- */
 .credo{margin:0 20px 18px;padding:17px 19px;border-radius:var(--r);position:relative;overflow:hidden;
@@ -474,7 +513,8 @@ let AREAS=[
 
 let UID=1;
 const N=(n,o={})=>({id:UID++,n,why:o.why||'',start:o.start||'',end:o.end||'',done:!!o.done,
- habit:o.habit||null,reward:o.reward||'',cons:o.cons||'',kids:o.kids||[]});
+ habit:o.habit||null,reward:o.reward||'',cons:o.cons||'',kids:o.kids||[],
+ doneNote:o.doneNote||'',failNote:o.failNote||'',doneAt:o.doneAt||''});
 
 let TREE={
  health:[
@@ -701,20 +741,52 @@ function vWelcome(){
   <div class="wl-t">Увидь свою жизнь.<br>Построй свой путь.</div>
   <div class="wl-s">Все цели на одной карте — от главной вершины до сегодняшнего шага.</div>
   <div class="wl-f">
-   <div class="wl-lbl">Как тебя зовут?</div>
-   <input class="inp" id="wlName" placeholder="Твоё имя" autocomplete="given-name"
-    onkeydown="if(event.key==='Enter')finishOnb()">
-   <button class="btn p" style="margin-top:14px" onclick="finishOnb()">Начать</button>
-   <div class="wl-or">или</div>
-   <button class="gbtn" onclick="googleSignIn()">
-    <svg width="19" height="19" viewBox="0 0 48 48"><path fill="#4285F4" d="M45.1 24.5c0-1.6-.1-2.7-.4-4H24v7.3h12.1c-.2 1.9-1.6 4.8-4.5 6.8l6.9 5.3c4.1-3.8 6.6-9.4 6.6-15.4z"/><path fill="#34A853" d="M24 46c5.9 0 10.9-2 14.5-5.3l-6.9-5.3c-1.8 1.3-4.3 2.2-7.6 2.2-5.8 0-10.7-3.8-12.5-9.1l-7.1 5.5C8.1 41 15.5 46 24 46z"/><path fill="#FBBC05" d="M11.5 28.5c-.5-1.4-.7-2.9-.7-4.5s.3-3.1.7-4.5l-7.1-5.5C2.9 17 2 20.4 2 24s.9 7 2.4 10z"/><path fill="#EA4335" d="M24 10.6c4.1 0 6.9 1.8 8.5 3.3l6.2-6C34.9 4.500 29.9 2 24 2 15.5 2 8.1 7 4.4 14l7.1 5.5c1.8-5.3 6.7-9 12.5-9z"/></svg>
-    Продолжить с Google</button>
-   <div class="wl-note">Имя сохранится на этом устройстве. Google нужен, чтобы цели синхронизировались между телефоном и компьютером.</div></div>
+   ${googleReady()?`
+    <div id="gHost" style="display:flex;justify-content:center;min-height:44px"></div>
+    <div class="wl-or">или по имени</div>
+    <input class="inp" id="wlName" placeholder="Твоё имя" autocomplete="given-name"
+     onkeydown="if(event.key==='Enter')finishOnb()">
+    <button class="btn o" style="margin-top:12px" onclick="finishOnb()">Продолжить без аккаунта</button>
+    <div class="wl-note">С Google имя и фото подставятся сами, и вход не придётся повторять.</div>`
+   :`<button class="gbtn" onclick="googleSignIn()">
+     <svg width="19" height="19" viewBox="0 0 48 48"><path fill="#4285F4" d="M45.1 24.5c0-1.6-.1-2.7-.4-4H24v7.3h12.1c-.2 1.9-1.6 4.8-4.5 6.8l6.9 5.3c4.1-3.8 6.6-9.4 6.6-15.4z"/><path fill="#34A853" d="M24 46c5.9 0 10.9-2 14.5-5.3l-6.9-5.3c-1.8 1.3-4.3 2.2-7.6 2.2-5.8 0-10.7-3.8-12.5-9.1l-7.1 5.5C8.1 41 15.5 46 24 46z"/><path fill="#FBBC05" d="M11.5 28.5c-.5-1.4-.7-2.9-.7-4.5s.3-3.1.7-4.5l-7.1-5.5C2.9 17 2 20.4 2 24s.9 7 2.4 10z"/><path fill="#EA4335" d="M24 10.6c4.1 0 6.9 1.8 8.5 3.3l6.2-6C34.9 4.5 29.9 2 24 2 15.5 2 8.1 7 4.4 14l7.1 5.5c1.8-5.3 6.7-9 12.5-9z"/></svg>
+     Продолжить с Google</button>
+    <div class="wl-or">или</div>
+    <div class="wl-lbl">Как тебя зовут?</div>
+    <input class="inp" id="wlName" placeholder="Твоё имя" autocomplete="given-name"
+     onkeydown="if(event.key==='Enter')finishOnb()">
+    <button class="btn p" style="margin-top:12px" onclick="finishOnb()">Начать</button>
+    <div class="wl-note">Имя сохранится на этом устройстве.</div>`}</div>
  </div></div>`;}
 function finishOnb(){
  const v=($('#wlName')?.value||'').trim();
  if(!v)return toast('Введи имя, чтобы продолжить');
  USER.n=v;USER.onb=true;ready=true;save();go('map');toast('Добро пожаловать, '+v+'!');}
+/* ============ ВХОД ЧЕРЕЗ GOOGLE ============
+ Чтобы заработало, нужен Client ID из Google Cloud Console — вписать строкой ниже.
+ На artifact-версии Google заблокирован политикой безопасности; работает на своём сайте. */
+const GOOGLE_CLIENT_ID='';
+function googleReady(){return !!GOOGLE_CLIENT_ID && window.self===window.top;}
+function initGoogle(){
+ if(!googleReady()||window.__gsi)return;window.__gsi=1;
+ const s=document.createElement('script');
+ s.src='https://accounts.google.com/gsi/client';s.async=true;s.defer=true;
+ s.onload=()=>{try{
+  google.accounts.id.initialize({client_id:GOOGLE_CLIENT_ID,callback:onGoogleCred,auto_select:false});
+  const host=document.getElementById('gHost');
+  if(host){host.innerHTML='';google.accounts.id.renderButton(host,
+   {theme:'outline',size:'large',width:300,text:'continue_with',shape:'pill',locale:'ru'});}
+ }catch(e){}};
+ s.onerror=()=>toast('Google не загрузился — проверь интернет');
+ document.head.appendChild(s);}
+function onGoogleCred(resp){
+ try{
+  const b=resp.credential.split('.')[1].replace(/-/g,'+').replace(/_/g,'/');
+  const p=JSON.parse(decodeURIComponent(escape(atob(b))));
+  USER.n=p.given_name||p.name||'Друг';USER.e=p.email||'';USER.photo=p.picture||'';
+  USER.google=true;USER.onb=true;ready=true;save();
+  ensureBaseline();go('map');toast('Здравствуйте, '+USER.n+'!');
+ }catch(e){toast('Не удалось прочитать ответ Google');}}
 function googleSignIn(){
  openSheet('Вход через Google','Что для этого нужно',
  `<div style="padding:0 6px 6px;font-size:14px;color:var(--t2);line-height:1.6">
@@ -726,7 +798,8 @@ function googleSignIn(){
 function focusName(){const i=$('#wlName');if(i)i.focus();}
 
 function render(){
- if(!USER.onb){$('#app').innerHTML=vWelcome();$('#tb').innerHTML='';return;}
+ if(!USER.onb){$('#app').innerHTML=vWelcome();$('#tb').innerHTML='';
+  if(googleReady())setTimeout(initGoogle,30);return;}
  const c=cur();const R={map:vMap,goals:vGoals,prog:vProg,me:vMe,area:vArea,goal:vGoal,
   create:vCreate,motiv:vMotiv,habits:vHabits,settings:vSettings,integr:vIntegr,rem:vRem,
   install:vInstall,core:vCore,me2:vMe2};
@@ -876,21 +949,30 @@ function vArea(c){
           :`<span class="credo-e" style="display:block;margin-top:6px">Напиши, что эта область даёт твоей жизни →</span>`}</button>
   <div class="sec-h"><span class="sec-t">Большие цели</span><span class="sec-x">${g.length}</span></div>
   <div class="rows">${g.length?g.map(n=>{const np=pct(n),lv=leaves(n),dn=lv.filter(x=>x.done).length,
-    sub=(n.kids||[]).filter(x=>(x.kids||[]).length).length;
-   return `<button class="gcard" style="--nc:${a.c};--nb:${a.c}22" onclick="push('goal',{id:${n.id}})">
-    <span class="gc-top"><span class="gc-i">${a.ic}</span>
+    sub=(n.kids||[]).filter(x=>(x.kids||[]).length).length,fin=np===100;
+   return `<button class="gcard${fin?' fin':''}" style="--nc:${a.c};--nb:${a.c}22" onclick="push('goal',{id:${n.id}})">
+    <span class="gc-top"><span class="gc-i">${fin?'✓':a.ic}</span>
      <span style="flex:1;min-width:0"><span class="gc-n" style="display:block">${esc(n.n)}</span>
       ${n.why?`<span class="gc-w" style="display:block">${esc(n.why)}</span>`:''}</span>
-     <span class="gc-p">${np}%</span></span>
-    <span class="bar"><i style="width:${np}%"></i></span>
+     <span class="gc-p" style="${fin?'color:var(--ok)':''}">${np}%</span></span>
+    <span class="bar"><i style="width:${np}%;${fin?'background:var(--ok)':''}"></i></span>
     <span class="gc-m"><span><b>${dn}/${lv.length}</b> задач</span>
      ${sub?`<span><b>${sub}</b> подцелей</span>`:''}
-     ${n.end?`<span>до ${esc(n.end)}</span>`:''}</span></button>`;}).join('')
+     ${n.end?`<span>до ${esc(n.end)}</span>`:''}
+     <span class="badge ${fin?'done':'run'}" style="margin-left:auto">${fin?'✓ Завершена':'В работе'}</span></span>
+    <span class="mini">${rewardChips(n)}</span></button>`;}).join('')
    :`<div class="empty"><div class="empty-i">◇</div><div class="empty-t">Нет больших целей</div>
      <div class="empty-s">Добавь первую большую цель в этой области — дальше разобьёшь её сам.</div></div>`}</div>
   <div style="padding:16px 20px 0"><button class="btn dash" onclick="push('create',{step:0,d:{area:'${a.id}'}})">+ Большая цель в «${a.n}»</button></div>`;
 }
 function backTo(){setTimeout(()=>go('map'),0);return '';}
+/* плашки «пряник / кнут» — видно сразу, что выбрано */
+function rewardChips(n){
+ const cut=s=>s.length>26?s.slice(0,25)+'…':s;
+ return (n.reward?`<span class="mini-c car">🎁 <span>${esc(cut(n.reward))}</span></span>`
+                 :`<span class="mini-c off">🎁 <span>пряник не задан</span></span>`)
+      + (n.cons?`<span class="mini-c stk">⚡ <span>${esc(cut(n.cons))}</span></span>`
+                :`<span class="mini-c off">⚡ <span>кнут не задан</span></span>`);}
 
 /* ============ GOAL — drill one level at a time ============ */
 function vGoal(c){
@@ -903,7 +985,10 @@ function vGoal(c){
    <div class="nb-c"><div class="nb-t">${esc(n.n)}</div><div class="nb-s">${p}% выполнено</div></div>
    <button class="icobtn" onclick="sheetGoal(${n.id})">⋯</button></div>
   ${n.why?`<div class="lead" style="text-align:center;padding-bottom:8px">${esc(n.why)}</div>`:''}
-  ${n.start?`<div style="text-align:center;padding:0 20px 18px;font-size:13px;color:var(--t5)">${esc(n.start)} → ${esc(n.end)}</div>`:'<div style="height:12px"></div>'}
+  ${n.start?`<div style="text-align:center;padding:0 20px 14px;font-size:13px;color:var(--t5)">${esc(n.start)} → ${esc(n.end)}</div>`:'<div style="height:10px"></div>'}
+  <div style="display:flex;justify-content:center;padding:0 20px 16px">
+   <span class="badge ${p===100?'done':'run'}">${p===100?'✓ Цель завершена':'В работе · '+p+'%'}</span></div>
+  ${finBlock(n,p)}
   <div class="tabs"><button class="tab${tab==='sub'?' on':''}" onclick="setTab('sub')">Подцели</button>
    <button class="tab${tab==='hab'?' on':''}" onclick="setTab('hab')">Привычки</button>
    <button class="tab${tab==='st'?' on':''}" onclick="setTab('st')">Статистика</button></div>
@@ -912,17 +997,56 @@ function vGoal(c){
    :stTab(n,a,p,lv,branches)}`;
 }
 function setTab(t){cur().tab=t;render();}
+/* Итог по цели: завершена — пряник и причина успеха; провалена — кнут и причина */
+function finBlock(n,p){
+ const fin=p===100;
+ if(fin){
+  if(!n.doneAt){n.doneAt=today();save();}
+  return `<div class="fin-box">
+   <div class="fin-h"><span class="fin-i">🏆</span>
+    <span><span class="fin-t" style="display:block">Цель достигнута</span>
+     <span class="fin-s" style="display:block">${esc(n.doneAt)} · все задачи закрыты</span></span></div>
+   <div class="fin-b">
+    <div class="fin-prize"><div class="fin-pl">🎁 Заслуженный пряник</div>
+     <div class="fin-pt">${n.reward?esc(n.reward):'Награда не была задана — самое время придумать'}</div></div>
+    ${n.doneNote?`<div class="fin-note"><b>Почему получилось</b>${esc(n.doneNote)}</div>`:''}
+    <button class="btn ${n.doneNote?'o':'p'}" style="margin-top:12px" onclick="askDoneNote(${n.id})">
+     ${n.doneNote?'Изменить причину':'Записать, почему получилось'}</button></div></div>`;}
+ if(n.failNote)
+  return `<div class="fin-box bad">
+   <div class="fin-h"><span class="fin-i">⚡</span>
+    <span><span class="fin-t" style="display:block">Сорвалось</span>
+     <span class="fin-s" style="display:block">цель не закрыта в срок</span></span></div>
+   <div class="fin-b">
+    <div class="fin-prize"><div class="fin-pl">⚡ Кнут</div>
+     <div class="fin-pt">${n.cons?esc(n.cons):'Последствие не было задано'}</div></div>
+    <div class="fin-note"><b>Почему не получилось</b>${esc(n.failNote)}</div>
+    <button class="btn o" style="margin-top:12px" onclick="askFailNote(${n.id})">Изменить причину</button></div></div>`;
+ return `<div class="pad" style="margin-bottom:16px"><div class="mini" style="margin:0">${rewardChips(n)}</div>
+  <button class="btn dash" style="margin-top:10px" onclick="askFailNote(${n.id})">Не получилось? Записать причину</button></div>`;}
+async function askDoneNote(id){const n=nodeById(id);if(!n)return;
+ const v=await askText({title:'Почему получилось',
+  note:'Запиши, что сработало — пригодится для следующих целей.',
+  label:'Причина',value:n.doneNote,ph:'Что помогло дойти до конца',multi:true});
+ if(v===null)return;n.doneNote=v.trim();render();toast('Записано');}
+async function askFailNote(id){const n=nodeById(id);if(!n)return;
+ const v=await askText({title:'Почему не получилось',
+  note:'Честная причина помогает не наступить на те же грабли.',
+  label:'Причина',value:n.failNote,ph:'Что помешало',multi:true});
+ if(v===null)return;n.failNote=v.trim();render();toast(v.trim()?'Записано':'Очищено');}
 function subTab(n,a,branches,tasks){
  return `${branches.length?`<div class="sec-h"><span class="sec-t">Подцели</span><span class="sec-x">${branches.length}</span></div>
-   <div class="rows">${branches.map(k=>{const kp=pct(k),lv=leaves(k),dn=lv.filter(x=>x.done).length;
-    return `<button class="gcard" style="--nc:${a.c};--nb:${a.c}22" onclick="push('goal',{id:${k.id}})">
+   <div class="rows">${branches.map(k=>{const kp=pct(k),lv=leaves(k),dn=lv.filter(x=>x.done).length,kf=kp===100;
+    return `<button class="gcard${kf?' fin':''}" style="--nc:${a.c};--nb:${a.c}22" onclick="push('goal',{id:${k.id}})">
      <span class="gc-top"><span style="flex:1;min-width:0">
-      <span class="gc-n" style="display:block;font-size:16px">${esc(k.n)}</span>
+      <span class="gc-n" style="display:block;font-size:16px">${kf?'✓ ':''}${esc(k.n)}</span>
       ${k.why?`<span class="gc-w" style="display:block">${esc(k.why)}</span>`:''}</span>
-      <span class="gc-p" style="font-size:19px">${kp}%</span></span>
-     <span class="bar"><i style="width:${kp}%"></i></span>
+      <span class="gc-p" style="font-size:19px;${kf?'color:var(--ok)':''}">${kp}%</span></span>
+     <span class="bar"><i style="width:${kp}%;${kf?'background:var(--ok)':''}"></i></span>
      <span class="gc-m"><span><b>${dn}/${lv.length}</b> задач</span>
-      ${k.habit?'<span class="api">API</span>':''}</span></button>`;}).join('')}</div>`:''}
+      ${k.habit?'<span class="api">API</span>':''}
+      <span class="badge ${kf?'done':'run'}" style="margin-left:auto">${kf?'Завершена':'В работе'}</span></span>
+     ${(k.reward||k.cons)?`<span class="mini">${rewardChips(k)}</span>`:''}</button>`;}).join('')}</div>`:''}
   ${tasks.length?`<div class="sec-h"><span class="sec-t">Задачи</span><span class="sec-x">${tasks.filter(t=>t.done).length}/${tasks.length}</span></div>
    <div class="rows">${tasks.map(t=>`<button class="task${t.done?' on':''}" onclick="tgNode(${t.id})">
      <span class="cb">✓</span><span class="task-n">${esc(t.n)}</span>
@@ -1055,12 +1179,9 @@ function vMe(){const lc=allLeaves();
    <button class="mi" onclick="push('me2')"><span class="mi-i">👤</span><span class="mi-n">Мои данные</span><span class="mi-v">имя, возраст, о себе</span><span class="row-c">›</span></button>
    <button class="mi" onclick="push('core')"><span class="mi-i">🗼</span><span class="mi-n">Главная цель жизни</span><span class="mi-v">${esc(CORE.n)}</span><span class="row-c">›</span></button>
    <button class="mi" onclick="go('goals')"><span class="mi-i">🎯</span><span class="mi-n">Цели</span><span class="mi-v">${countGoals()} активных</span><span class="row-c">›</span></button>
-   <button class="mi" onclick="push('rem')"><span class="mi-i">🔔</span><span class="mi-n">Напоминания</span><span class="mi-v">${SET.rem?'вкл':'выкл'}</span><span class="row-c">›</span></button>
    <div class="msep"></div>
    <button class="mi" onclick="push('settings')"><span class="mi-i">⚙️</span><span class="mi-n">Настройки</span><span class="row-c">›</span></button>
-   <button class="mi" onclick="push('integr')"><span class="mi-i">🔌</span><span class="mi-n">Данные из других сайтов</span><span class="mi-v">${SOURCES.length||HABITS.length}</span><span class="row-c">›</span></button>
-   <div class="msep"></div>
-   <button class="mi red" onclick="logout()"><span class="mi-i">⏻</span><span class="mi-n">Выйти из аккаунта</span></button></div>
+   <button class="mi" onclick="push('integr')"><span class="mi-i">🔌</span><span class="mi-n">Данные из других сайтов</span><span class="mi-v">${SOURCES.length||HABITS.length}</span><span class="row-c">›</span></button></div>
   <div style="display:flex;flex-direction:column;align-items:center;gap:8px;padding:30px 20px 10px;opacity:.45">
    ${logo(38)}<div class="brand-s">МАЯК · EST. 2024</div>
    <div style="font-size:11px;color:var(--t5);margin-top:2px">сохраняется автоматически</div></div>`;}
@@ -1081,8 +1202,8 @@ function vMe2(){
    <input class="inp" id="uName" value="${esc(USER.n)}" placeholder="Как тебя зовут">
    <div class="wl-lbl" style="margin-top:20px">Возраст</div>
    <input class="inp" id="uAge" value="${esc(USER.age||'')}" placeholder="Например: 30 лет">
-   <div class="wl-lbl" style="margin-top:20px">О себе</div>
-   <textarea class="txa" id="uBio" placeholder="Пара слов о себе — чем занимаешься, к чему идёшь">${esc(USER.bio||'')}</textarea>
+   <div class="wl-lbl" style="margin-top:20px">Биография</div>
+   <textarea class="txa" id="uBio" placeholder="Расскажи о себе">${esc(USER.bio||'')}</textarea>
    <div class="hint">Показывается в профиле под именем</div>
    <button class="btn p" style="margin-top:22px" onclick="saveMe()">Сохранить</button></div>`;}
 function saveMe(){
